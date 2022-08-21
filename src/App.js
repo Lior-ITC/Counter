@@ -1,73 +1,71 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
 
-class App extends Component {
-  state = {
-    counters: [
-      { id: 1, value: 0 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 },
-    ],
-  };
+function App() {
+  const defaultState = () =>[
+    { id: 1, value: 0 },
+    { id: 2, value: 0 },
+    { id: 3, value: 0 },
+    { id: 4, value: 0 },
+  ]
+  const [counters, setCounter] = useState(defaultState)
 
-  handleIncrement = (counter) => {
-    const counters = [...this.state.counters];
+  const handleIncrement = (counter) => {
+    const tempCounters = [...counters];
     const index = counters.indexOf(counter);
-    counters[index] = { ...counters[index] };
-    counters[index].value++;
-    this.setState({ counters });
+    tempCounters[index] = { ...tempCounters[index] };
+    tempCounters[index].value++;
+    setCounter(tempCounters );
   };
 
-  handleDecrement = (counter) => {
-    const counters = [...this.state.counters];
+  const handleDecrement = (counter) => {
+    const tempCounters = [...counters];
     const index = counters.indexOf(counter);
-    counters[index] = { ...counters[index] };
-    counters[index].value--;
-    this.setState({ counters });
+    tempCounters[index] = { ...tempCounters[index] };
+    tempCounters[index].value--;
+    setCounter(tempCounters );
   };
 
-  handleReset = () => {
-    const counters = this.state.counters.map((c) => {
+  const handleReset = () => {
+    const tempCounters = counters.map((c) => {
       c.value = 0;
       return c;
     });
-    this.setState({ counters });
+    setCounter(tempCounters);
   };
 
-  handleDelete = (counterId) => {
-    const counters = this.state.counters.filter((c) => c.id !== counterId);
-    this.setState({ counters });
+  const handleDelete = (counterId) => {
+    console.log(counterId);
+    const tempCounters = counters.filter((c) => c.id !== counterId);
+    setCounter(tempCounters);
   };
 
-  handleRestart = () => {
-    window.location.reload();
+  const handleRestart = () => {
+    setCounter(defaultState())
   };
 
-  render() {
-    return (
-      <div className="main__wrap">
-        <main className="container">
-          <div className="card__box">
-            <NavBar
-              totalCounters={
-                this.state.counters.filter((c) => c.value > 0).length
-              }
-            />
-            <Counters
-              counters={this.state.counters}
-              onReset={this.handleReset}
-              onIncrement={this.handleIncrement}
-              onDecrement={this.handleDecrement}
-              onDelete={this.handleDelete}
-              onRestart={this.handleRestart}
-            />
-          </div>
-        </main>
-      </div>
-    );
-  }
+  return (
+    <div className="main__wrap">
+      <main className="container">
+        <div className="card__box">
+          <NavBar
+            totalCounters={
+              counters.filter((c) => c.value > 0).length
+            }
+          />
+          <Counters
+            counters={counters}
+            onReset={handleReset}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+            onDelete={handleDelete}
+            onRestart={handleRestart}
+          />
+        </div>
+      </main>
+    </div>
+  );
 }
 
 export default App;

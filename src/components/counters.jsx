@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Counter from "./counter";
 
-class Counters extends Component {
-  render() {
-    const { onReset, onIncrement, onDelete, onDecrement, counters, onRestart } =
-      this.props;
+function Counters(props) {
+  const { onReset, onIncrement, onDelete, onDecrement, counters, onRestart } =
+      props;
     return (
       <div>
         <div className="row">
@@ -36,7 +35,6 @@ class Counters extends Component {
         ))}
       </div>
     );
-  }
 }
 
 export default Counters;
