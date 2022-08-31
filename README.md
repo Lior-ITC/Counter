@@ -4,11 +4,6 @@
 
 **This is a very basic app but useful to understand the React Components, states, Data Flow, parent to child etc. .**
 
-## Live URL :-
-
-> [Counter App](https://obscure-waters-60500.herokuapp.com)
-
-**OR your can do the following to run in your local machine**
 
 ## Scripts
 
