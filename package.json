@@ -2,10 +2,6 @@
   "name": "counter-app",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "11.10.0",
-    "npm": "6.7.0"
-  },
   "dependencies": {
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
@@ -33,11 +29,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
-    "@testing-library/user-event": "^14.1.1",
-    "eslint-plugin-jest-dom": "^4.0.1",
-    "eslint-plugin-testing-library": "^5.3.1",
     "jest": "^28.0.3"
   }
 }
